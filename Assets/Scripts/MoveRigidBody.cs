@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class MoveRigidBody : MonoBehaviour
 {
-    private Rigidbody2D rb2D;
-    private Vector2 velocity;
-
+    private Rigidbody2D sawRigidbody;
+    public Transform targer;
+    public float speed = 1f;
 
     private void Awake()
     {
-        rb2D = gameObject.AddComponent<Rigidbody2D>();
+        sawRigidbody = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        velocity = new Vector2(1.75f, 1.1f);
+
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+       
+    }
 
     void FixedUpdate()
     {
-        rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
+        //Laskee suunnan
+        Vector2 direction = ((Vector2)targer.position - sawRigidbody.position).normalized;
+
+        // Uusi sijainti nopeuden ja suunnan perusteella
+        Vector2 newPosition = sawRigidbody.position + direction * speed * Time.fixedDeltaTime;
+
+        // Liikuttaa olentoa
+        sawRigidbody.MovePosition(newPosition);
     }
 }
