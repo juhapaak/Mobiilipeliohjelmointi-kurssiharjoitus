@@ -4,45 +4,23 @@ using UnityEngine;
 
 public class MoveRigidBody : MonoBehaviour
 {
-    private Rigidbody2D sawRigidbody;
-    private bool righty = true;
-    public float speed = 2.0f;
-    public float rightest = 1.0f;
-    public float leftest = -2.0f;
+    private Rigidbody2D rb2D;
+    private Vector2 velocity;
+
 
     private void Awake()
     {
-        sawRigidbody = GetComponent<Rigidbody2D>();
+        rb2D = gameObject.AddComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        velocity = new Vector2(1.75f, 1.1f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(righty)
-
-            transform.Translate(sawRigidbody.position * Vector2.right * speed * Time.deltaTime);
-
-        else
-            transform.Translate(sawRigidbody.position * - Vector2.right * speed * Time.deltaTime);
-
-        if (transform.position.x >= rightest)
-        {
-            righty = false;
-        }
-
-        if (transform.position.x <= leftest)
-        {
-            righty = true;
-        }
-    }
 
     void FixedUpdate()
     {
-
+        rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
     }
 }
