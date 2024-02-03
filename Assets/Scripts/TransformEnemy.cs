@@ -2,34 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransformEnemy : MonoBehaviour
+namespace harjoitus
 {
-	private bool righty = true;
-	public float speed = 2.0f;
-	public float rightest = 1.0f;
-	public float leftest = -2.0f;
-
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-	void Update()
+	public class TransformEnemy : MonoBehaviour
 	{
-		if (righty)
-			transform.Translate(Vector2.right * speed * Time.deltaTime);
-		else
-			transform.Translate(-Vector2.right * speed * Time.deltaTime);
+		private bool righty = true;
+		public float speed = 2.0f;
+		public float rightest = 1.0f;
+		public float leftest = -2.0f;
 
-		if (transform.position.x >= rightest)
+		// Start is called before the first frame update
+		void Start()
 		{
-			righty = false;
+
 		}
 
-		if (transform.position.x <= leftest)
+		void Update()
 		{
-			righty = true;
+			if (righty)
+				transform.Translate(Vector2.right * speed * Time.deltaTime);
+			else
+				transform.Translate(-Vector2.right * speed * Time.deltaTime);
+
+			if (transform.position.x >= rightest)
+			{
+				righty = false;
+			}
+
+			if (transform.position.x <= leftest)
+			{
+				righty = true;
+			}
 		}
 	}
 }

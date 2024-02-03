@@ -2,37 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveRigidBody : MonoBehaviour
+namespace harjoitus
 {
-    private Rigidbody2D sawRigidbody;
-    public Transform targer;
-    public float speed = 1f;
 
-    private void Awake()
+
+    public class MoveRigidBody : MonoBehaviour
     {
-        sawRigidbody = GetComponent<Rigidbody2D>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        private Rigidbody2D sawRigidbody;
+        public Transform targer;
+        public float speed = 1f;
 
-    }
+        private void Awake()
+        {
+            sawRigidbody = GetComponent<Rigidbody2D>();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    void FixedUpdate()
-    {
-        //Laskee suunnan
-        Vector2 direction = ((Vector2)targer.position - sawRigidbody.position).normalized;
+        }
 
-        // Uusi sijainti nopeuden ja suunnan perusteella
-        Vector2 newPosition = sawRigidbody.position + direction * speed * Time.fixedDeltaTime;
+        // Update is called once per frame
+        void Update()
+        {
 
-        // Liikuttaa olentoa
-        sawRigidbody.MovePosition(newPosition);
+        }
+
+        void FixedUpdate()
+        {
+            //Laskee suunnan
+            Vector2 direction = ((Vector2)targer.position - sawRigidbody.position).normalized;
+
+            // Uusi sijainti nopeuden ja suunnan perusteella
+            Vector2 newPosition = sawRigidbody.position + direction * speed * Time.fixedDeltaTime;
+
+            // Liikuttaa olentoa
+            sawRigidbody.MovePosition(newPosition);
+        }
     }
 }
