@@ -32,7 +32,7 @@ namespace harjoitus
             targetRigidbody2D.position = position;
         }
 
-        public void Jump(bool jump)
+        public void Jump()
         {
             Debug.Log("Jumped!");
         }
@@ -46,7 +46,11 @@ namespace harjoitus
             
             // TODO JUMPING FIX
             bool isJumping = _inputReader.Jump;
-            Jump(isJumping);
+            //Jump(isJumping);
+            if(isJumping)
+            {
+                Jump();
+            }
         }
     }
 }

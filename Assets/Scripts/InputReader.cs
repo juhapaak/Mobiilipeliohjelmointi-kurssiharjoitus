@@ -42,7 +42,13 @@ namespace harjoitus
         void Update()
         {
             _movementInput = _inputs.Game.Move.ReadValue<Vector2>();
-            _jumpInput = _inputs.Game.Jump.ReadValue<bool>();
+            //_jumpInput = _inputs.Game.Jump.ReadValue<bool>();
+
+            // Tarkastaa milloin Jump-nappia painetaan tai p‰‰stet‰‰n irti, muuttaa boolia sen mukaan
+            if (_inputs.Game.Jump.WasPressedThisFrame())
+                _jumpInput = true;
+            if (_inputs.Game.Jump.WasReleasedThisFrame())
+                _jumpInput = false;
         }
     }
 }
