@@ -7,7 +7,7 @@ namespace harjoitus
 {
     public class Mover : MonoBehaviour
     {
-
+	// PISTÄ Alaviiva todo
         private Rigidbody2D targetRigidbody2D;
 
         [SerializeField] private float _speed = 1.0f;
@@ -42,15 +42,15 @@ namespace harjoitus
             // Lukee inputreaderista syötteen.
             Vector2 movement = _inputReader.Movement;
             // Syöte annetaan Move metodille.
-            Move(movement);
+            Move(movement); // siirrä fixed updateen
             
-            // TODO JUMPING FIX
+            // Hyppääminen
             bool isJumping = _inputReader.Jump;
             //Jump(isJumping);
             if(isJumping)
             {
                 Jump();
             }
-        }
+        } 
     }
 }
