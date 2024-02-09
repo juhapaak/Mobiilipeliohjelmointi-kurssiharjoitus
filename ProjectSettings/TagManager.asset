@@ -44,3 +44,12 @@ TagManager:
   - name: Player
     uniqueID: 3957906793
     locked: 0
+  - name: Background
+    uniqueID: 3205834531
+    locked: 0
+  - name: backgroundDeco
+    uniqueID: 1575525225
+    locked: 0
+  - name: PlayableArea
+    uniqueID: 233759587
+    locked: 0
