@@ -61,28 +61,16 @@ namespace harjoitus
             Vector2 movement = _inputReader.Movement;
             // Syöte annetaan Move metodille.
             Move(movement); // siirrä fixed updateen
-            
 
-            
-        } 
-        private void FixedUpdate()
-        {
             // Hyppääminen
             bool isJumping = _inputReader.Jump;
             //Jump(isJumping);
-            if(isJumping)
+            if (isJumping)
             {
                 Jump();
-                isJumping = false;
-                StartCoroutine(waiter());
-                
             }
-        }
 
-        IEnumerator waiter()
-        { 
-            yield return new WaitForSeconds(1);
-        }
+        } 
         
     }
 }
