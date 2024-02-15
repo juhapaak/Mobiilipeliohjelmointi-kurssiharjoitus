@@ -9,8 +9,15 @@ namespace harjoitus
     {
 	// PISTÄ Alaviiva todo
         private Rigidbody2D targetRigidbody2D;
+        [SerializeField] private float thrust = 4.0f;
 
         [SerializeField] private float _speed = 1.0f;
+		
+		// Jump gravity
+		[SerializeField]
+  		private float _gravityScale; // GravityScale used
+		[SerializeField]
+    	private float _fallingGravityScale; // GravityScale used when player falls down
 
         private InputReader _inputReader = null;
         // Start is called before the first frame update
@@ -34,23 +41,48 @@ namespace harjoitus
 
         public void Jump()
         {
-            Debug.Log("Jumped!");
+            targetRigidbody2D.velocity = new Vector2(targetRigidbody2D.velocity.x, thrust);
+            Debug.Log("JUmp");
         }
 
         private void Update()
         {
+            // Gravity 
+            if(targetRigidbody2D.velocity.y >= 0)
+            {
+                targetRigidbody2D.gravityScale = _gravityScale;
+            }
+            else if (targetRigidbody2D.velocity.y < 0)
+            {
+                targetRigidbody2D.gravityScale = _fallingGravityScale;
+            }
+            
             // Lukee inputreaderista syötteen.
             Vector2 movement = _inputReader.Movement;
             // Syöte annetaan Move metodille.
             Move(movement); // siirrä fixed updateen
             
+
+            
+        } 
+        private void FixedUpdate()
+        {
             // Hyppääminen
             bool isJumping = _inputReader.Jump;
             //Jump(isJumping);
             if(isJumping)
             {
                 Jump();
+                isJumping = false;
+                StartCoroutine(waiter());
+                
             }
-        } 
+        }
+
+        IEnumerator waiter()
+        { 
+            yield return new WaitForSeconds(1);
+        }
+        
     }
 }
