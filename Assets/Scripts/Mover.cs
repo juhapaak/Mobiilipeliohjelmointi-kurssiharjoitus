@@ -9,8 +9,11 @@ namespace harjoitus
     {
 	// PISTÄ Alaviiva todo
         private Rigidbody2D targetRigidbody2D;
+        // Jump
         [SerializeField] private float thrust = 4.0f;
 
+        private bool _canJump;
+        //Speed
         [SerializeField] private float _speed = 1.0f;
 		
 		// Jump gravity
@@ -18,9 +21,11 @@ namespace harjoitus
   		private float _gravityScale; // GravityScale used
 		[SerializeField]
     	private float _fallingGravityScale; // GravityScale used when player falls down
-
+        // Input reader
         private InputReader _inputReader = null;
-        // Start is called before the first frame update
+        
+        // collision tsekkausta varten collider
+        [SerializeField] private Collider2D _groundCheckColl;
 
         private void Awake()
         {
@@ -65,11 +70,21 @@ namespace harjoitus
             // Hyppääminen
             bool isJumping = _inputReader.Jump;
             //Jump(isJumping);
-            if (isJumping)
+            if (isJumping && _canJump)
             {
                 Jump();
+                _canJump = false;
             }
 
+        } 
+        
+        private void OnCollisionEnter2D(Collision2D collision) 
+        { 
+            if (collision.gameObject.CompareTag("Ground")) 
+            { 
+                Debug.Log("Collaa");
+                _canJump = true;
+            } 
         } 
         
     }
