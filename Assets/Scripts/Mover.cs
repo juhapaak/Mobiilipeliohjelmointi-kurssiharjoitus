@@ -17,10 +17,8 @@ namespace harjoitus
         [SerializeField] private float _speed = 1.0f;
 		
 		// Jump gravity
-		[SerializeField]
-  		private float _gravityScale; // GravityScale used
-		[SerializeField]
-    	private float _fallingGravityScale; // GravityScale used when player falls down
+		[SerializeField] private float _gravityScale; // GravityScale 
+		[SerializeField] private float _fallingGravityScale; // GravityScale kun tippuu alaspäi
         // Input reader
         private InputReader _inputReader = null;
         
