@@ -106,6 +106,17 @@ namespace harjoitus
                 },
                 {
                     ""name"": """",
+                    ""id"": ""76e88eaa-9cb6-41d2-9bb8-368560a77efd"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f89f9e81-22b8-4222-9146-456258085755"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
